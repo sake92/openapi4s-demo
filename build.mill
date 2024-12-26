@@ -9,10 +9,12 @@ import ba.sake.openapi4s.OpenApiGeneratorModule
 
 object api extends ScalaModule with OpenApiGeneratorModule with ScalafmtModule {
   def scalaVersion = "3.6.2"
+
   def ivyDeps = Agg(
     ivy"ba.sake::sharaf:0.8.1"
   )
-  def openApi4sPackage = "com.example.petstore"
+
+  def openApi4sPackage = "com.example.petstore.api"
 
   // custom command to generate openapi and then reformat the project
   def regenerate() = Task.Command {
