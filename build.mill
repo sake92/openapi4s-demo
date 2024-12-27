@@ -1,6 +1,6 @@
 package build
 
-import $ivy.`ba.sake::mill-openapi4s::0.0.9-SNAPSHOT`
+import $ivy.`ba.sake::mill-openapi4s::0.0.10`
 
 import mill._
 import mill.scalalib._
