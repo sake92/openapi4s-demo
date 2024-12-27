@@ -6,7 +6,7 @@ Petstore spec is downloaded on 26.12.2024 from https://petstore3.swagger.io/api/
 
 # First time generating
 ```shell
-./mill -i --j 1 api.regenerate
+./mill -i -j 1 api.regenerate
 
 # git commit files..
 ```
