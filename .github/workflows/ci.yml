@@ -20,6 +20,6 @@ jobs:
           distribution: 'temurin'
           java-version: 11
       - run: |
-          ./mill -i --j 1 api.regenerate
+          ./mill -i --jobs 1 api.regenerate
           ./mill __.compile
           cat ./api/src/com/example/petstore/api/models/Pet.scala
