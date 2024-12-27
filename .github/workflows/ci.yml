@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: main
+  pull_request:
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 11
+      - run: |
+          ./mill -i --j 1 api.regenerate
+          ./mill __.compile
+          cat ./api/src/com/example/petstore/api/models/Pet.scala
