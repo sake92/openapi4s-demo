@@ -25,7 +25,7 @@ import org.http4s.implicits._
 import com.comcast.ip4s._
 import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.server.middleware.Logger
-import ba.sake.petstore.api.routes.*
+import com.example.petstore.api.routes.*
 
 object Main extends IOApp.Simple {
   override def run: IO[Unit] = (for {
@@ -34,7 +34,7 @@ object Main extends IOApp.Simple {
       new UserRoutes().routes <+>
         new PetRoutes().routes <+>
         new StoreRoutes().routes
-      ).orNotFound
+    ).orNotFound
     finalHttpApp = Logger.httpApp(true, true)(httpApp)
     _ <-
       EmberServerBuilder
@@ -44,5 +44,6 @@ object Main extends IOApp.Simple {
         .withHttpApp(finalHttpApp)
         .build
   } yield ()).useForever
+
 }
- */
+*/
