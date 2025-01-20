@@ -1,5 +1,6 @@
 @base=http://localhost:8080
 
+
 ### find pets by status
 GET {{base}}/pet/findByStatus?status=available
 
