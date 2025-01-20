@@ -21,3 +21,4 @@ jobs:
           java-version: 11
       - run: |
           ./mill --jobs 1 api.openApi4sGenerate
+          ./mill api.compile
