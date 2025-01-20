@@ -3,33 +3,11 @@ package build
 import $ivy.`ba.sake::mill-openapi4s::0.1.2`
 import mill._
 import mill.scalalib._
-import mill.scalalib.scalafmt._
 import ba.sake.openapi4s.OpenApiGeneratorModule
 
-object api extends ScalaModule
-  with OpenApiGeneratorModule
-  with ScalafmtModule {
+object api extends ScalaModule with OpenApiGeneratorModule {
 
   def scalaVersion = "3.6.2"
 
-  def ivyDeps = Agg(
-    // sharaf
-    ivy"ba.sake::sharaf:0.8.1",
-    // if you use http4s
-    // ivy"org.http4s::http4s-ember-server:0.23.29",
-    // ivy"org.http4s::http4s-circe:0.23.29",
-    // ivy"org.http4s::http4s-dsl:0.23.29"
-  )
-
-  // if you use http4s
-  // def openApi4sGenerator: T[String] = "http4s"
-
   def openApi4sPackage = "com.example.petstore.api"
-
-  // custom command to generate openapi and then reformat the project
-  def regenerate() = Task.Command {
-    openApi4sGenerate()()
-    reformat()()
-    ()
-  }
 }
