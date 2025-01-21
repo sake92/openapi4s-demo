@@ -2,9 +2,8 @@
 
 Petstore spec is downloaded on 26.12.2024 from https://petstore3.swagger.io/api/v3/openapi.json
 
-Here is a small demo video (sorry for awful quality, will fix later):
 
-https://github.com/user-attachments/assets/f7f6f1c7-1c00-4b34-b725-faed4cc28db7
+Here is a small video demo: https://youtu.be/kf0vGrlKNb8
 
 # First time generating
 ```shell
