@@ -23,3 +23,10 @@ jobs:
           ./mill api.reformat
           ./mill api.compile
           cat ./api/src/com/example/petstore/api/models/Pet.scala
+          # check if there is any diff after regeneration (accidental overwrite)
+          echo " " >> api/resources/openapi.yaml
+          ./mill api.reformat
+          echo "GIT DIFF:"
+          git diff
+          echo "END GIT DIFF"
+          truncate -s -1 sample.txt
