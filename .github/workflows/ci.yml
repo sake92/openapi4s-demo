@@ -22,8 +22,8 @@ jobs:
       - run: |
           ./mill api.reformat
           ./mill api.compile
-          cat ./api/src/com/example/petstore/api/models/Pet.scala
-          # check if there is any diff after regeneration (accidental overwrite)
+
+          # check if there is any diff after regeneration
           echo " " >> api/resources/openapi.yaml
           ./mill api.reformat
           truncate -s -1 api/resources/openapi.yaml
