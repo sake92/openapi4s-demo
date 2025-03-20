@@ -981,11 +981,6 @@
             "format": "int64",
             "example": 100000
           },
-          "id2": {
-            "type": "integer",
-            "format": "int64",
-            "example": 100000
-          },
           "username": {
             "type": "string",
             "example": "fehguy"
