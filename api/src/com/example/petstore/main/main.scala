@@ -16,34 +16,3 @@ import com.example.petstore.api.controllers.*
     .build
     .start()
   println("Server started at http://localhost:8080")
-
-/* http4s version */
-/*
-import cats.effect.{IO, IOApp, Resource}
-import cats.implicits._
-import org.http4s.implicits._
-import com.comcast.ip4s._
-import org.http4s.ember.server.EmberServerBuilder
-import org.http4s.server.middleware.Logger
-import com.example.petstore.api.routes.*
-
-object Main extends IOApp.Simple {
-  override def run: IO[Unit] = (for {
-    _ <- Resource.pure(())
-    httpApp = (
-      new UserRoutes().routes <+>
-        new PetRoutes().routes <+>
-        new StoreRoutes().routes
-    ).orNotFound
-    finalHttpApp = Logger.httpApp(true, true)(httpApp)
-    _ <-
-      EmberServerBuilder
-        .default[IO]
-        .withHost(ipv4"0.0.0.0")
-        .withPort(port"8080")
-        .withHttpApp(finalHttpApp)
-        .build
-  } yield ()).useForever
-
-}
- */
