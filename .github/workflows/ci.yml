@@ -26,7 +26,7 @@ jobs:
           # check if there is any diff after regeneration (accidental overwrite)
           echo " " >> api/resources/openapi.yaml
           ./mill api.reformat
-          echo "GIT DIFF:"
-          git diff
-          echo "END GIT DIFF"
-          truncate -s -1 sample.txt
+          truncate -s -1 api/resources/openapi.yaml
+          git diff --exit-code
+          git_diff_status=$?
+          exit $git_diff_status
