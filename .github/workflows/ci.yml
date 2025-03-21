@@ -20,12 +20,9 @@ jobs:
           distribution: 'temurin'
           java-version: 11
       - run: |
-          ./mill api.reformat
-          ./mill api.compile
-
           # check if there is any diff after regeneration
           echo " " >> api/resources/openapi.yaml
-          ./mill api.reformat
+          ./mill api.compile
           truncate -s -1 api/resources/openapi.yaml
           git diff --exit-code
           git_diff_status=$?

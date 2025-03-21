@@ -8,8 +8,8 @@ Here is a video demo: https://youtu.be/kf0vGrlKNb8
 ```shell
 # 1. update the openapi.json
 
-# 2. (re)generate + format
-./mill api.reformat
+# 2. (re)generate
+./mill api.compile
 
 # 3. see what changed
 git diff
