@@ -12,9 +12,13 @@ object api extends ScalaModule
   def scalaVersion = "3.6.2"
 
   def ivyDeps = Agg(
-    ivy"ba.sake::sharaf:0.8.1"
+    ivy"ba.sake::sharaf:0.8.2",
+    ivy"org.webjars:swagger-ui:5.20.1"
   )
 
   def openApi4sPackage = "com.example.petstore.api"
+  
+  // public so we can expose it with SwaggerUI
+  def openApi4sFile = T.source(PathRef(millSourcePath / "resources/public/openapi.json"))
 
 }

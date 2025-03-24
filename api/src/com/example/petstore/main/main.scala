@@ -6,6 +6,7 @@ import com.example.petstore.api.controllers.*
 
 @main def apiMain =
   val allRoutes = Seq[Routes](
+    new SwaggerUIController().routes,
     new UserController().routes,
     new PetController().routes,
     new StoreController().routes
