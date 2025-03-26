@@ -25,8 +25,8 @@ jobs:
           ./mill api.compile
           truncate -s -1 api/resources/openapi.yaml
           git diff --exit-code
-          git_diff_status=$?
-          exit $git_diff_status
+          [ $? -eq 0 ]  || exit 1
           
           # check if there are any breaking changes
           ./scripts/check-breaking-changes.sh
+          [ $? -eq 0 ]  || exit 1
