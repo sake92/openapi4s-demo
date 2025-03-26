@@ -28,5 +28,5 @@ jobs:
           [ $? -eq 0 ]  || exit 1
           
           # check if there are any breaking changes
-          ./scripts/check-breaking-changes.sh
+          ./scripts/openapi-diff.sh
           [ $? -eq 0 ]  || exit 1
