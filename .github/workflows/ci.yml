@@ -15,15 +15,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: actions/setup-java@v3
+      - uses: coursier/setup-action@v1
         with:
-          distribution: 'temurin'
-          java-version: 11
+          jvm: temurin:11
+          apps: []
       - run: |
-          # check if there is any diff after regeneration
+          # check if there are any diffs after regeneration, prevent overwrites
           echo " " >> api/resources/openapi.yaml
           ./mill api.compile
           truncate -s -1 api/resources/openapi.yaml
           git diff --exit-code
           git_diff_status=$?
           exit $git_diff_status
+          
+          # check if there are any breaking changes
+          ./scripts/check-breaking-changes.sh
