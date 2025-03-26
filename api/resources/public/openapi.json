@@ -1049,6 +1049,11 @@
             "format": "int64",
             "example": 10
           },
+          "age": {
+            "type": "integer",
+            "format": "int64",
+            "example": 30
+          },
           "username": {
             "type": "string",
             "example": "theUser"
