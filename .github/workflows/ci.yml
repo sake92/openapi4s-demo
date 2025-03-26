@@ -18,7 +18,7 @@ jobs:
       - uses: coursier/setup-action@v1
         with:
           jvm: temurin:11
-          apps: []
+          apps: ""
       - run: |
           # check if there are any diffs after regeneration, prevent overwrites
           echo " " >> api/resources/openapi.yaml
