@@ -10,17 +10,17 @@ import com.example.petstore.api.models.*
 
 class UserController {
   def routes = Routes {
-    case POST() -> Path("user") =>
+    case POST -> Path("user") =>
       val reqBody = Request.current.bodyJsonValidated[User]
       Response
         .withStatus(StatusCodes.NOT_IMPLEMENTED)
         .withBody("TODO: return User")
-    case POST() -> Path("user", "createWithList") =>
+    case POST -> Path("user", "createWithList") =>
       val reqBody = Request.current.bodyJsonValidated[Seq[User]]
       Response
         .withStatus(StatusCodes.NOT_IMPLEMENTED)
         .withBody("TODO: return User")
-    case GET() -> Path("user", "login") =>
+    case GET -> Path("user", "login") =>
       case class QP(
         username: Option[String],
         password: Option[String]
@@ -29,16 +29,16 @@ class UserController {
       Response
         .withStatus(StatusCodes.NOT_IMPLEMENTED)
         .withBody("TODO: return String")
-    case GET() -> Path("user", "logout") =>
+    case GET -> Path("user", "logout") =>
       Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
-    case GET() -> Path("user", username) =>
+    case GET -> Path("user", username) =>
       Response
         .withStatus(StatusCodes.NOT_IMPLEMENTED)
         .withBody("TODO: return User")
-    case PUT() -> Path("user", username) =>
+    case PUT -> Path("user", username) =>
       val reqBody = Request.current.bodyJsonValidated[User]
       Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
-    case DELETE() -> Path("user", username) =>
+    case DELETE -> Path("user", username) =>
       Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
   }
 

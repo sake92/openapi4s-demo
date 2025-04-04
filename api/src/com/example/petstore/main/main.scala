@@ -6,10 +6,10 @@ import com.example.petstore.api.controllers.*
 
 @main def apiMain =
   val allRoutes = Seq[Routes](
-    new SwaggerUIController().routes,
     new UserController().routes,
     new PetController().routes,
-    new StoreController().routes
+    new StoreController().routes,
+    new SwaggerUIController().routes
   )
   Undertow.builder
     .addHttpListener(8080, "localhost")
