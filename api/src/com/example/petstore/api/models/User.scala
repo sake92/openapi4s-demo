@@ -14,5 +14,5 @@ case class User(
   email: Option[String],
   password: Option[String],
   phone: Option[String],
-  userStatus: Option[Int]
+  userStatus: Option[Int], age: Option[Long]
 ) derives JsonRW
