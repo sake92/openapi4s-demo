@@ -1101,8 +1101,7 @@
       },
       "Pet": {
         "required": [
-          "name",
-          "photoUrls"
+          "name"
         ],
         "type": "object",
         "properties": {
