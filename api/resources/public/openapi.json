@@ -1007,6 +1007,10 @@
             "type": "string",
             "example": "437 Lytton"
           },
+          "street2": {
+            "type": "string",
+            "example": "437 Lytton"
+          },
           "city": {
             "type": "string",
             "example": "Palo Alto"
