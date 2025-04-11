@@ -1,6 +1,6 @@
 package build
 
-import $ivy.`ba.sake::mill-openapi4s::0.3.1`
+import $ivy.`ba.sake::mill-openapi4s::0.3.2`
 import mill._
 import mill.scalalib._, scalafmt._
 import ba.sake.openapi4s.OpenApiGeneratorModule
@@ -12,7 +12,7 @@ object api extends ScalaModule
   def scalaVersion = "3.6.2"
 
   def ivyDeps = Agg(
-    ivy"ba.sake::sharaf:0.8.2",
+    ivy"ba.sake::sharaf:0.9.3",
     ivy"org.webjars:swagger-ui:5.20.1"
   )
 

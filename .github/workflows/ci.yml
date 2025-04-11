@@ -20,11 +20,8 @@ jobs:
           jvm: temurin:11
           apps: ""
       - run: |
-          # check if there are any diffs after regeneration, prevent overwrites
-          echo " " >> api/resources/openapi.yaml
-          ./mill api.compile
-          truncate -s -1 api/resources/openapi.yaml
-          git diff --exit-code
+          # check if there are any accidental diffs after regeneration, prevent overwrites
+          ./scripts/check-accidental-overwrite.sh
           [ $? -eq 0 ]  || exit 1
           
           # check if there are any breaking changes
