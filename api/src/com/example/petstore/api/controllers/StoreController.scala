@@ -10,18 +10,18 @@ import com.example.petstore.api.models.*
 
 class StoreController {
   def routes = Routes {
-    case GET() -> Path("store", "inventory") =>
+    case GET -> Path("store", "inventory") =>
       Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
-    case POST() -> Path("store", "order") =>
+    case POST -> Path("store", "order") =>
       val reqBody = Request.current.bodyJsonValidated[Order]
       Response
         .withStatus(StatusCodes.NOT_IMPLEMENTED)
         .withBody("TODO: return Order")
-    case GET() -> Path("store", "order", param[Long](orderId)) =>
+    case GET -> Path("store", "order", param[Long](orderId)) =>
       Response
         .withStatus(StatusCodes.NOT_IMPLEMENTED)
         .withBody("TODO: return Order")
-    case DELETE() -> Path("store", "order", param[Long](orderId)) =>
+    case DELETE -> Path("store", "order", param[Long](orderId)) =>
       Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
   }
 

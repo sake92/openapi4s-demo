@@ -4,10 +4,10 @@ import io.undertow.util.Headers
 import ba.sake.sharaf.*, routing.*
 
 class SwaggerUIController() {
-  
+
   val baseUrl = "http://localhost:8080"
   val swaggerWebjarUrl = "/swagger-ui/5.20.1"
-  
+
   val indexFile =
     s"""
       |<!DOCTYPE html>
@@ -49,7 +49,12 @@ class SwaggerUIController() {
       |""".stripMargin
 
   def routes = Routes {
-    case GET() -> Path("swagger") =>
-      Response.withBody(indexFile).settingHeader(Headers.CONTENT_TYPE, "text/html")
+    case GET -> Path("swagger") =>
+      Response
+        .withBody(indexFile)
+        .settingHeader(Headers.CONTENT_TYPE, "text/html")
+    case GET -> Path() =>
+      Response.redirect("/swagger")
   }
+
 }
