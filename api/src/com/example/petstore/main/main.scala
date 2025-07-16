@@ -1,19 +1,18 @@
 package com.example.petstore.main
 
-import io.undertow.Undertow
-import ba.sake.sharaf.*, routing.*
+import ba.sake.sharaf.*
+import ba.sake.sharaf.undertow.UndertowSharafServer
 import com.example.petstore.api.controllers.*
+import com.example.petstore.ui.controllers.SwaggerUIController
 
 @main def apiMain =
-  val allRoutes = Seq[Routes](
-    new UserController().routes,
-    new PetController().routes,
-    new StoreController().routes,
-    new SwaggerUIController().routes
+  val routes = Routes.merge(
+    Seq(
+      UserController().routes,
+      PetController().routes,
+      StoreController().routes,
+      SwaggerUIController().routes
+    )
   )
-  Undertow.builder
-    .addHttpListener(8080, "localhost")
-    .setHandler(SharafHandler(Routes.merge(allRoutes)))
-    .build
-    .start()
+  UndertowSharafServer("localhost", 8080, routes).start()
   println("Server started at http://localhost:8080")

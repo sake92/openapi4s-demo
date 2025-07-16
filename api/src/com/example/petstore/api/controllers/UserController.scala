@@ -2,7 +2,7 @@ package com.example.petstore.api.controllers
 
 import java.time.*
 import java.util.UUID
-import io.undertow.util.StatusCodes
+import sttp.model.StatusCode
 import ba.sake.querson.QueryStringRW
 import ba.sake.validson.Validator
 import ba.sake.sharaf.*, routing.*
@@ -13,12 +13,12 @@ class UserController {
     case POST -> Path("user") =>
       val reqBody = Request.current.bodyJsonValidated[User]
       Response
-        .withStatus(StatusCodes.NOT_IMPLEMENTED)
+        .withStatus(StatusCode.NotImplemented)
         .withBody("TODO: return User")
     case POST -> Path("user", "createWithList") =>
       val reqBody = Request.current.bodyJsonValidated[Seq[User]]
       Response
-        .withStatus(StatusCodes.NOT_IMPLEMENTED)
+        .withStatus(StatusCode.NotImplemented)
         .withBody("TODO: return User")
     case GET -> Path("user", "login") =>
       case class QP(
@@ -27,19 +27,19 @@ class UserController {
       ) derives QueryStringRW
       val qp = Request.current.queryParamsValidated[QP]
       Response
-        .withStatus(StatusCodes.NOT_IMPLEMENTED)
+        .withStatus(StatusCode.NotImplemented)
         .withBody("TODO: return String")
     case GET -> Path("user", "logout") =>
-      Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
+      Response.withStatus(StatusCode.NotImplemented)
     case GET -> Path("user", username) =>
       Response
-        .withStatus(StatusCodes.NOT_IMPLEMENTED)
+        .withStatus(StatusCode.NotImplemented)
         .withBody("TODO: return User")
     case PUT -> Path("user", username) =>
       val reqBody = Request.current.bodyJsonValidated[User]
-      Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
+      Response.withStatus(StatusCode.NotImplemented)
     case DELETE -> Path("user", username) =>
-      Response.withStatus(StatusCodes.NOT_IMPLEMENTED)
+      Response.withStatus(StatusCode.NotImplemented)
   }
 
 }
