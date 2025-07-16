@@ -9,7 +9,7 @@ Here is a video demo: https://youtu.be/kf0vGrlKNb8
 # 1. update the openapi.json
 
 # 2. (re)generate
-./mill api.compile
+./mill api.openApi4sGenerate
 
 # 3. see what changed
 git diff
