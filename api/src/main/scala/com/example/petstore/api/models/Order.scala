@@ -11,7 +11,7 @@ case class Order(
   petId: Option[Long],
   quantity: Option[Int],
   shipDate: Option[Instant],
-  status: Option[OrderStatus],
+  status: Option["placed" | "approved" | "delivered"],
   complete: Option[Boolean]
 ) derives JsonRW
 

@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-echo " " >> api/resources/openapi.json      # append a space at end of openapi.json
-./mill api.openApi4sGenerate                # trigger OpenApi4s
-truncate -s -1 api/resources/openapi.json   # remove the space at end of openapi.json
+# The sbt task always runs the generator; no spec modification is needed.
+sbt 'api/openApi4sGenerate'
 
-git diff --exit-code                        # check if there are any accidental diffs
-[ $? -eq 0 ]  || exit 1                     # abort if there are
+git diff --exit-code -- api/src/main/scala
+if [[ -n "$(git ls-files --others --exclude-standard -- api/src/main/scala)" ]]; then
+  echo "Generation produced untracked sources; commit them before running this check." >&2
+  exit 1
+fi
