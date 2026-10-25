@@ -12,7 +12,7 @@ case class Pet(
   category: Option[Category],
   photoUrls: Seq[String],
   tags: Option[Seq[Tag]],
-  status: Option[PetStatus]
+  status: Option["available" | "pending" | "sold"]
 ) derives JsonRW
 
 enum PetStatus derives JsonRW { case available, pending, sold }
