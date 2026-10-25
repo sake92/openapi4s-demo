@@ -17,8 +17,10 @@ jobs:
           fetch-depth: 0
       - uses: coursier/setup-action@v1
         with:
-          jvm: temurin:11
+          jvm: temurin:21
           apps: ""
+      - uses: sbt/setup-sbt@v1
+      - run: sbt 'api/compile'
       - run: |
           # check if there are any accidental diffs after regeneration, prevent overwrites
           ./scripts/check-accidental-overwrite.sh
