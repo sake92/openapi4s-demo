@@ -19,29 +19,39 @@ class PetRoutes:
       extends OptionalQueryParamDecoderMatcher[String]("additionalMetadata")
   def routes = HttpRoutes.of[IO] {
     case req @ PUT -> Root / "pet" =>
-      for reqBody <- req.as[Pet]; resp <- NotImplemented("TODO: return Pet")
+      for
+        reqBody <- req.as[Pet]
+        resp <- NotImplemented("TODO: return Pet")
       yield resp
     case req @ POST -> Root / "pet" =>
-      for reqBody <- req.as[Pet]; resp <- NotImplemented("TODO: return Pet")
+      for
+        reqBody <- req.as[Pet]
+        resp <- NotImplemented("TODO: return Pet")
       yield resp
     case req @ GET -> Root / "pet" / "findByStatus" :? StatusQueryParamMatcher(
           status
         ) =>
-      for resp <- NotImplemented("TODO: return Seq[Pet]") yield resp
+      for resp <- NotImplemented("TODO: return Seq[Pet]")
+      yield resp
     case req @ GET -> Root / "pet" / "findByTags" :? TagsQueryParamMatcher(
           cats.data.Validated.Valid(tags)
         ) =>
-      for resp <- NotImplemented("TODO: return Seq[Pet]") yield resp
+      for resp <- NotImplemented("TODO: return Seq[Pet]")
+      yield resp
     case req @ GET -> Root / "pet" / petId =>
-      for resp <- NotImplemented("TODO: return Pet") yield resp
+      for resp <- NotImplemented("TODO: return Pet")
+      yield resp
     case req @ POST -> Root / "pet" / petId :? NameQueryParamMatcher(
           name
         ) +& StatusQueryParamMatcher2(status) =>
-      for resp <- NotImplemented() yield resp
+      for resp <- NotImplemented()
+      yield resp
     case req @ DELETE -> Root / "pet" / petId =>
-      for resp <- NotImplemented() yield resp
+      for resp <- NotImplemented()
+      yield resp
     case req @ POST -> Root / "pet" / petId / "uploadImage" :? AdditionalmetadataQueryParamMatcher(
           additionalMetadata
         ) =>
-      for resp <- NotImplemented("TODO: return ApiResponse") yield resp
+      for resp <- NotImplemented("TODO: return ApiResponse")
+      yield resp
   }

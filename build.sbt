@@ -1,8 +1,6 @@
 import ba.sake.openapi4s.OpenApi4sPlugin
 
-ThisBuild / resolvers += "Sonatype snapshots" at "https://central.sonatype.com/repository/maven-snapshots"
-
-ThisBuild / scalaVersion := "3.7.1"
+scalaVersion := "3.9.0"
 
 lazy val root = project
   .in(file("."))
@@ -25,5 +23,5 @@ lazy val api = project
     openApi4sModels := "circe",
     openApi4sFramework := Some("http4s"),
     openApi4sValidation := "none",
-    openApi4sVersion := "0.9.1-SNAPSHOT"
+    openApi4sVersion := "0.9.1-LOCAL-SNAPSHOT"
   )

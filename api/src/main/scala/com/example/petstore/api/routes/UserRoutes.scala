@@ -13,23 +13,32 @@ class UserRoutes:
       extends OptionalQueryParamDecoderMatcher[String]("password")
   def routes = HttpRoutes.of[IO] {
     case req @ POST -> Root / "user" =>
-      for reqBody <- req.as[User]; resp <- NotImplemented("TODO: return User")
+      for
+        reqBody <- req.as[User]
+        resp <- NotImplemented("TODO: return User")
       yield resp
     case req @ POST -> Root / "user" / "createWithList" =>
       for
-        reqBody <- req.as[Seq[User]];
+        reqBody <- req.as[Seq[User]]
         resp <- NotImplemented("TODO: return User")
       yield resp
     case req @ GET -> Root / "user" / "login" :? UsernameQueryParamMatcher(
           username
         ) +& PasswordQueryParamMatcher(password) =>
-      for resp <- NotImplemented("TODO: return String") yield resp
+      for resp <- NotImplemented("TODO: return String")
+      yield resp
     case req @ GET -> Root / "user" / "logout" =>
-      for resp <- NotImplemented() yield resp
+      for resp <- NotImplemented()
+      yield resp
     case req @ GET -> Root / "user" / username =>
-      for resp <- NotImplemented("TODO: return User") yield resp
+      for resp <- NotImplemented("TODO: return User")
+      yield resp
     case req @ PUT -> Root / "user" / username =>
-      for reqBody <- req.as[User]; resp <- NotImplemented() yield resp
+      for
+        reqBody <- req.as[User]
+        resp <- NotImplemented()
+      yield resp
     case req @ DELETE -> Root / "user" / username =>
-      for resp <- NotImplemented() yield resp
+      for resp <- NotImplemented()
+      yield resp
   }
