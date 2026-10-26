@@ -7,7 +7,7 @@ case class Pet(
     id: Option[Long],
     name: String,
     category: Option[Category],
-    photoUrls: Seq[String],
+    photoUrls: Option[Seq[String]],
     tags: Option[Seq[Tag]],
     status: Option[PetStatus]
 )
