@@ -7,13 +7,15 @@ Here is a video demo: https://youtu.be/kf0vGrlKNb8
 ## Usage
 
 Requires JDK 17 or newer and sbt 2 (pinned in `project/build.properties`).
-The build uses sbt-openapi4s 0.1.0 and OpenAPI4s 0.9.0.
+The build uses sbt-openapi4s 0.1.0 and OpenAPI4s 0.9.1-SNAPSHOT (from the Sonatype snapshots repository), generating http4s routes and Circe models.
+The server runs on http4s Ember.
 
 ```shell
 # 1. update the openapi.json
 
 # 2. (re)generate
 sbt 'api/openApi4sGenerate'
+scalafmt
 
 # 3. see what changed
 git diff
@@ -44,3 +46,14 @@ To prevent that, there is a [small CI script](./.github/workflows/ci.yml) that c
 It regenerates the files and checks that the generated sources have no changes afterward.
 This way you can be sure that your changes are preserved correctly.
 
+## Formatting and smoke tests
+
+Install the pinned formatter with `cs install scalafmt:3.11.5`.
+The Scala 3 rewrites use [Scalafmt's common preset](https://scalameta.org/scalafmt/docs/configuration#rewritescala3-presets). Run `scalafmt` after generation.
+
+```shell
+scalafmt --test
+sbt 'api/Test/runMain com.example.petstore.HttpSmokeTest'
+```
+
+The smoke tests start an Ember server on an available port and check API stubs, JSON decoding errors, Swagger UI, static resources, and missing routes. The server is closed when the checks finish.

@@ -1,5 +1,7 @@
 import ba.sake.openapi4s.OpenApi4sPlugin
 
+ThisBuild / resolvers += "Sonatype snapshots" at "https://central.sonatype.com/repository/maven-snapshots"
+
 ThisBuild / scalaVersion := "3.7.1"
 
 lazy val root = project
@@ -11,13 +13,17 @@ lazy val api = project
   .enablePlugins(OpenApi4sPlugin)
   .settings(
     libraryDependencies ++= Seq(
-      "ba.sake" %% "sharaf-undertow" % "0.13.0",
-      "ba.sake" %% "tupson" % "0.30.0",
+      "org.http4s" %% "http4s-ember-server" % "0.23.38",
+      "org.http4s" %% "http4s-dsl" % "0.23.38",
+      "org.http4s" %% "http4s-circe" % "0.23.38",
+      "io.circe" %% "circe-generic" % "0.14.15",
       "org.webjars" % "swagger-ui" % "5.20.1"
     ),
-    Compile / mainClass := Some("com.example.petstore.main.apiMain"),
+    Compile / mainClass := Some("com.example.petstore.main.Main"),
     openApi4sPackage := "com.example.petstore.api",
     openApi4sFile := (Compile / resourceDirectory).value / "public" / "openapi.json",
-    openApi4sValidation := "validson",
-    openApi4sVersion := "0.9.0"
+    openApi4sModels := "circe",
+    openApi4sFramework := Some("http4s"),
+    openApi4sValidation := "none",
+    openApi4sVersion := "0.9.1-SNAPSHOT"
   )

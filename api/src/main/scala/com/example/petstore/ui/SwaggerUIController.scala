@@ -1,15 +1,16 @@
 package com.example.petstore.ui.controllers
 
-import io.undertow.util.Headers
-import ba.sake.sharaf.{*, given}
+import cats.effect.IO
+import org.http4s.*
+import org.http4s.dsl.io.*
+import org.http4s.headers.`Content-Type`
 
 class SwaggerUIController() {
 
-  val baseUrl = "http://localhost:8080"
   val swaggerWebjarUrl = "/swagger-ui/5.20.1"
 
   val indexFile =
-    html"""
+    s"""
       <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -29,7 +30,7 @@ class SwaggerUIController() {
           <script>
           window.onload = function() {
             window.ui = SwaggerUIBundle({
-              url: "${baseUrl}/openapi.json",
+              url: "/openapi.json",
               dom_id: '#swagger-ui',
               deepLinking: true,
               presets: [
@@ -47,11 +48,10 @@ class SwaggerUIController() {
       </html>
     """
 
-  def routes = Routes {
-    case GET -> Path("swagger") =>
-      Response.withBody(indexFile)
-    case GET -> Path() =>
-      Response.redirect("/swagger")
+  def routes = HttpRoutes.of[IO] {
+    case GET -> Root / "swagger" =>
+      Ok(indexFile, `Content-Type`(MediaType.text.html))
+    case GET -> Root =>
+      TemporaryRedirect(headers.Location(Uri.unsafeFromString("/swagger")))
   }
-
 }
