@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # The sbt task always runs the generator; no spec modification is needed.
-sbt 'api/openApi4sGenerate'
+sbt 'api/openApi4sGenerate; scalafmtAll'
 
 git diff --exit-code -- api/src/main/scala
 if [[ -n "$(git ls-files --others --exclude-standard -- api/src/main/scala)" ]]; then
