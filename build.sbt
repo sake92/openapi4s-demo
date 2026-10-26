@@ -22,6 +22,6 @@ lazy val api = project
     openApi4sFile := (Compile / resourceDirectory).value / "public" / "openapi.json",
     openApi4sModels := "circe",
     openApi4sFramework := Some("http4s"),
-    openApi4sValidation := "none",
+    openApi4sValidation := "iron",
     openApi4sVersion := "0.10.0"
   )
