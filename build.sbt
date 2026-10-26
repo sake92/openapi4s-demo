@@ -23,5 +23,5 @@ lazy val api = project
     openApi4sModels := "circe",
     openApi4sFramework := Some("http4s"),
     openApi4sValidation := "none",
-    openApi4sVersion := "0.9.1-LOCAL-SNAPSHOT"
+    openApi4sVersion := "0.10.0"
   )
