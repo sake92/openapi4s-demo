@@ -4,6 +4,8 @@ Petstore [spec](api/src/main/resources/public/openapi.json) is downloaded on 26.
 
 Here is a video demo: https://youtu.be/kf0vGrlKNb8
 
+This branch uses http4s. A Sharaf version is available on the [`sharaf` branch](https://github.com/sake92/openapi4s-demo/tree/sharaf).
+
 ## Usage
 
 Requires JDK 17 or newer and sbt 2 (pinned in `project/build.properties`).
