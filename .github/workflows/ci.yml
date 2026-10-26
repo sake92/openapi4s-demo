@@ -18,10 +18,9 @@ jobs:
       - uses: coursier/setup-action@v1
         with:
           jvm: temurin:21
-          apps: "scalafmt:3.11.5"
+          apps: ""
       - uses: sbt/setup-sbt@v1
-      - run: scalafmt --test
-      - run: sbt 'api/compile; api/Test/runMain com.example.petstore.HttpSmokeTest'
+      - run: sbt 'scalafmtCheckAll; api/compile; api/Test/runMain com.example.petstore.HttpSmokeTest'
       - run: |
           # check if there are any accidental diffs after regeneration, prevent overwrites
           ./scripts/check-accidental-overwrite.sh

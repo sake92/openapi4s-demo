@@ -14,8 +14,7 @@ The server runs on http4s Ember.
 # 1. update the openapi.json
 
 # 2. (re)generate
-sbt 'api/openApi4sGenerate'
-scalafmt
+sbt 'api/openApi4sGenerate; scalafmtAll'
 
 # 3. see what changed
 git diff
@@ -48,11 +47,11 @@ This way you can be sure that your changes are preserved correctly.
 
 ## Formatting and smoke tests
 
-Install the pinned formatter with `cs install scalafmt:3.11.5`.
-The Scala 3 rewrites use [Scalafmt's common preset](https://scalameta.org/scalafmt/docs/configuration#rewritescala3-presets). Run `scalafmt` after generation.
+Formatting uses sbt-scalafmt 2.6.2 with Scalafmt 3.11.5 pinned in `.scalafmt.conf`.
+The Scala 3 rewrites use [Scalafmt's common preset](https://scalameta.org/scalafmt/docs/configuration#rewritescala3-presets). Run `sbt scalafmtAll` after generation.
 
 ```shell
-scalafmt --test
+sbt scalafmtCheckAll
 sbt 'api/Test/runMain com.example.petstore.HttpSmokeTest'
 ```
 
